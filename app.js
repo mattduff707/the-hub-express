@@ -13,6 +13,9 @@ app.use(express.urlencoded({ extended: false }));
 // });
 
 app.use('/api', snippetsRouter);
+app.get('/', (req, res) => {
+  res.json({ message: 'hello world' });
+});
 
 const PORT = process.env.PORT || 3000;
 
