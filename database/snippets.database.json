@@ -1,0 +1,25 @@
+{
+  "snippetsList": [
+    {
+      "name": "useFetch",
+      "id": 0,
+      "path": "/useFetch",
+      "description": "Hook for simple api calls with loading and error states.",
+      "language": "react"
+    },
+    {
+      "name": "CoolButton",
+      "id": 1,
+      "path": "/CSS/CoolButton",
+      "description": "Cool 3D button with springy bounce",
+      "language": "CSS"
+    },
+    {
+      "name": "VisuallyHidden",
+      "id": 2,
+      "path": "/react/visuallyHidden",
+      "description": "Component for visually hidden elements",
+      "language": "react"
+    }
+  ]
+}
