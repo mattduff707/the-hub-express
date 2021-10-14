@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-require('dotenv').config({ path: './config.env' });
-const snippetsRouter = require('./routes/snippets.routes');
-const tasksRouter = require('./routes/tasks.routes');
-const dbo = require('./db/conn');
 app.use(cors());
+require('dotenv').config({ path: './config.env' });
+const dbo = require('./db/conn');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+const snippetsRouter = require('./routes/snippets.routes');
+const tasksRouter = require('./routes/tasks.routes');
 
 app.use('/', snippetsRouter);
 app.use('/', tasksRouter);
