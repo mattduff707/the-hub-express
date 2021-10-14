@@ -3,7 +3,7 @@
     {
       "name": "useFetch",
       "id": 0,
-      "path": "/useFetch",
+      "path": "react/useFetch",
       "description": "Hook for simple api calls with loading and error states.",
       "language": "react"
     },
