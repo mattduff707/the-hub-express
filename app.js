@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   dbo.connectToServer(function (err) {
-    if (err) console.error(err);
+    if (err) console.error(err, 'heyo');
   });
   console.log(`Server started on port ${PORT}`);
 });
