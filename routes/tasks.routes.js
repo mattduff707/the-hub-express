@@ -41,8 +41,7 @@ tasksRoutes.route('/tasklist/:id').delete((req, response) => {
   let myQuery = { _id: ObjectId(req.params.id) };
   db_connect.collection('todo').deleteOne(myQuery, (err, obj) => {
     if (err) throw err;
-
-    response.status(obj);
+    response.status(204).end();
   });
 });
 
