@@ -28,6 +28,8 @@ tasksRoutes.route("/tasklist").post((req, response) => {
   let taskObj = {
     value: req.body.value,
     date_added: req.body.date_added,
+    completed: req.body.completed,
+    date_completed: req.body.date_completed,
   };
   db_connect.collection("todo").insertOne(taskObj, (err, res) => {
     if (err) throw err;
@@ -57,26 +59,18 @@ tasksRoutes.route("/tasklist/:id").patch((req, response) => {
     response.json(res);
   });
 });
-tasksRoutes.route("/tasklist/donelist/").get((req, res) => {
-  let db_connect = dbo.getDb("tasklist");
-  db_connect
-    .collection("done")
-    .find({})
-    .toArray((err, result) => {
-      if (err) throw err;
-      res.json(result);
-    });
-});
-tasksRoutes.route("/tasklist/donelist/").post((req, response) => {
-  let db_connect = dbo.getDb("tasklist");
-  let taskObj = {
-    value: req.body.value,
-    date_added: req.body.date_added,
-    date_completed: req.body.date_completed,
+tasksRoutes.route("/tasklist/done/:id").patch((req, response) => {
+  let db_connect = dbo.getDb();
+  let myQuery = { _id: ObjectId(req.params.id) };
+  let newValues = {
+    $set: {
+      completed: req.body.completed,
+      date_completed: req.body.date_completed,
+    },
   };
-  db_connect.collection("done").insertOne(taskObj, (err, res) => {
+  db_connect.collection("todo").updateOne(myQuery, newValues, (err, res) => {
     if (err) throw err;
-    response.json(res.insertedId);
+    response.json(res);
   });
 });
 
