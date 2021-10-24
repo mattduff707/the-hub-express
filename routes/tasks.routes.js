@@ -31,7 +31,6 @@ tasksRoutes.route("/tasklist").post((req, response) => {
   };
   db_connect.collection("todo").insertOne(taskObj, (err, res) => {
     if (err) throw err;
-
     response.json(res.insertedId);
   });
 });
@@ -67,6 +66,18 @@ tasksRoutes.route("/tasklist/donelist/").get((req, res) => {
       if (err) throw err;
       res.json(result);
     });
+});
+tasksRoutes.route("/tasklist/donelist/").post((req, response) => {
+  let db_connect = dbo.getDb("tasklist");
+  let taskObj = {
+    value: req.body.value,
+    date_added: req.body.date_added,
+    date_completed: req.body.date_completed,
+  };
+  db_connect.collection("done").insertOne(taskObj, (err, res) => {
+    if (err) throw err;
+    response.json(res.insertedId);
+  });
 });
 
 module.exports = tasksRoutes;
