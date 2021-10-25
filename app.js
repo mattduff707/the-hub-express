@@ -24,11 +24,11 @@ app.get('/', (req, res) => {
   res.json({ message: 'hello world' });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
   dbo.connectToServer(function (err) {
-    if (err) console.error(err, 'heyo');
+    if (err) console.error(err);
   });
   console.log(`Server started on port ${PORT}`);
 });
