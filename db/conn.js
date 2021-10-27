@@ -12,7 +12,7 @@ module.exports = {
     client.connect(function (err, db) {
       // Verify we got a good "db" object
       if (db) {
-        _db = db.db('tasklist');
+        _db = db.db('hub');
         console.log('Successfully connected to MongoDB.');
       }
       return callback(err);
