@@ -17,9 +17,11 @@ app.use(allowCrossDomain);
 
 const snippetsRouter = require('./routes/snippets.routes');
 const tasksRouter = require('./routes/tasks.routes');
+const bookmarksRouter = require('./routes/bookmarks.routes');
 
 app.use('/', snippetsRouter);
 app.use('/', tasksRouter);
+app.use('/', bookmarksRouter);
 app.get('/', (req, res) => {
   res.json({ message: 'hello world' });
 });
