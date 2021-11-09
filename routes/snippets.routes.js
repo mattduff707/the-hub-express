@@ -1,8 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
 
-var snippets_controller = require('../controllers/snippets.controller');
+const snippets_routes = express.Router();
 
-router.get('/snippets', snippets_controller.getSnippetsList);
+var snippets_controller = require("../controllers/snippets.controller");
 
-module.exports = router;
+snippets_routes.route("/snippets").get(snippets_controller.get_snippets);
+// snippets_routes.route("/snippets").post(snippets_controller.add_snippet);
+
+module.exports = snippets_routes;

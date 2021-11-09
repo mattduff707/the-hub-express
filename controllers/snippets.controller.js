@@ -1,10 +1,7 @@
-const fs = require('fs');
+const fs = require("fs");
 
-exports.getSnippetsList = function (req, res) {
-  fs.readFile('./database/snippets.database.json', (err, data) => {
-    if (err) throw err;
-    const { snippetsList } = JSON.parse(data);
-    console.log(snippetsList);
-    res.json(snippetsList);
+exports.get_snippets = function (req, res) {
+  fs.readFile("./markdown/test.md", "utf8", (err, data) => {
+    res.json(data);
   });
 };
