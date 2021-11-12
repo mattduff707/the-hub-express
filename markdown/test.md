@@ -1,4 +1,4 @@
-```jsx
+```
 import useFetch from "../../../services/useFetch";
 import { Switch, Route } from "react-router";
 import { NavLink } from "react-router-dom";
