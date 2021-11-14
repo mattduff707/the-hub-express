@@ -3,6 +3,7 @@ const dbo = require("../db/conn");
 const { ObjectId } = require("bson");
 
 const snippets_tag = "snippets";
+const snippets_categories_tag = "snippets_categories";
 
 exports.get_snippets = function (req, res) {
   // fs.readFile("./markdown/test.md", "utf8", (err, data) => {
@@ -11,6 +12,17 @@ exports.get_snippets = function (req, res) {
   let db_connect = dbo.getDb("hub");
   db_connect
     .collection(snippets_tag)
+    .find({})
+    .toArray((err, result) => {
+      if (err) throw err;
+      res.json(result);
+    });
+};
+
+exports.get_categories = function (req, res) {
+  let db_connect = dbo.getDb("hub");
+  db_connect
+    .collection(snippets_categories_tag)
     .find({})
     .toArray((err, result) => {
       if (err) throw err;
