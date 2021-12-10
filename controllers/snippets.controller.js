@@ -18,11 +18,8 @@ exports.get_snippets = function (req, res) {
 
 exports.add_snippet = (req, response) => {
   let db_connect = dbo.getDb();
-  let snippet_obj = {
-    value: req.body.snippet,
-  };
-  db_connect.collection(snippets_tag).insertOne(snippet_obj, (err, res) => {
+  db_connect.collection(snippets_tag).insertOne(req.body, (err, res) => {
     if (err) throw err;
-    // response.json(res.insertedId);
+    response.json(res.insertedId);
   });
 };
